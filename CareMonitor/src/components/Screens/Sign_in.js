@@ -10,6 +10,7 @@ import {
   StyleSheet 
 
 } from 'react-native';
+import Sign_Up from './Sign_Up';
 
 const Sign_in = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -21,12 +22,21 @@ const Sign_in = ({navigation}) => {
     // to authenticate the user
     if ( !email || !password) {
       Alert.alert('Error', 'Please fill in all fields');
-    
+     return;
     }
-
-      navigation.navigate("Doctor_profile");
+    navigation.navigate("User_Stat_Monitoring");
     
-};  
+};   
+const handleSignup = () => {
+
+  if (Sign_Up) {
+    return <Sign_Up/>;
+  
+  }
+
+  // Simulate sign-in success
+  Alert.alert('Success', 'You have signed in successfully!');
+}
      
   
 
@@ -52,8 +62,11 @@ const Sign_in = ({navigation}) => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Log in</Text>
-        <Icon name="arrow-right" size={24} color="white" />
+        {/* <Icon name="arrow-right" size={24} color="white" /> */}
       </TouchableOpacity>
+
+      
+
       <Text style={styles.orText}>Or Login With</Text>
       <View style={styles.socialLoginContainer}>
         <View style={styles.socialButtons}>
@@ -79,10 +92,15 @@ const Sign_in = ({navigation}) => {
 
 
       </View>
-      <Text style={styles.signupText}>
-        Don't have an account ?{' '}
-        <Text style={styles.signupLink}>Sign up</Text>
-      </Text>
+      <TouchableOpacity >
+          <Text style={styles.signupText}>
+            Don't have an account ?{' '}
+              <Text style={styles.signupLink}  onPress={handleSignup}>Sign up</Text>
+          
+            {/* <Text style={styles.signupLink}>Sign up</Text> */}
+          </Text>
+      </TouchableOpacity>
+    
     </View>
   );
 };
@@ -114,15 +132,17 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 35,
     width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    //flexDirection: 'row',
+   // alignItems: 'center',
     
 
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignSelf: 'center',
+
   },
   orText: {
     marginTop: 20,

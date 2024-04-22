@@ -36,7 +36,7 @@ const DoctorProfile = ({ navigation }) => {
       <View style={styles.header}>
         <Image 
           style={styles.avatar}
-          source={require('../assets/Avatar.png')} // Replace with your avatar image path
+          source={require('../assets/Avatar.png')} 
         />
         <Text style={styles.doctorName}>Dr. Thomas Shelby</Text>
         <Text style={styles.doctorSpeciality}>Cardiologist</Text>
@@ -83,26 +83,22 @@ const DoctorProfile = ({ navigation }) => {
       {/* Specializations */}
       <View style={styles.specializationsSection}>
         <Text style={styles.sectionTitle}>Specializes at</Text>
-        <View style={styles.specializationButtons}>
-          <TouchableOpacity style={styles.specializationButton1}>
-            <Text style={styles.specializationText}>Cardiology</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.specializationButton2}>
-            <Text style={styles.specializationText}>Infections</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.specializationButton3}>
-            <Text style={styles.specializationText}>Pulmonary Pathology</Text>
-          </TouchableOpacity>
+        <View style={styles.specializations}>
+            <Text style={styles.specializationText1}>Cardiology</Text>
+            <Text style={styles.specializationText2}>Infections</Text>
+            <Text style={styles.specializationText3}>Pulmonary Pathology</Text>
+          
         </View>
       </View>
 
       {/* Booking Section */}
       <View style={styles.bookingSection}>
-        <Text style={styles.priceText}>$ 50.00</Text>
-        <TouchableOpacity style={styles.bookButton}>
+        <Text style={styles.priceText}>Price</Text>
+        <Text style={styles.priceNumber}>$ 50.00</Text>
+      </View>
+      <TouchableOpacity style={styles.bookButton}>
           <Text style={styles.bookButtonText}>Book Appointment</Text>
         </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -113,8 +109,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffff',
   },
-  // Add more styles for each element here...
-  // Example:
+
   header: {
     alignItems: 'center',
     marginBottom: 20,
@@ -135,11 +130,10 @@ const styles = StyleSheet.create({
     color: '#D7EAF9',
   },
   avatar: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     marginHorizontal: 10,
-    marginTop: 2,
-    //borderRadius: 50,
+  
   },
   starcontainer: {
     flexDirection: 'row',
@@ -173,6 +167,7 @@ const styles = StyleSheet.create({
     width: 102,
     margin: -10,
     marginTop: 22,
+
     // Shadow effect
     shadowColor: 'black',
     shadowOffset: {
@@ -183,8 +178,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5, // For Android
     //margin: 15,
-
   },
+
   infoNumber1: {
     fontWeight: '800',
     fontSize: 20,
@@ -195,14 +190,13 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontSize: 20,
     alignSelf: 'center',
-    //paddingRight: 10,
-    //marginTop: 25,
   },
 infoNumber3: {
   fontSize: 13,
   fontWeight:'900',
   alignSelf: 'center',
   color: '#ffff',
+  marginTop: 17,
 },
   infoLabel1: {
     fontSize: 20,
@@ -222,7 +216,7 @@ infoNumber3: {
     alignSelf: 'center',
   },
   aboutTitle: {
-    fontSize: 16,
+    fontSize: 14,
     color:'#000000',
     fontWeight: '600',
   },
@@ -230,81 +224,88 @@ infoNumber3: {
     justifyContent: 'center',
     fontSize: 13,
     color: '#A4A0A0',
-    paddingTop: 12,
+    paddingTop: 10,
   },
   viewAll: {
     color: 'blue',
   },
-  specializationButtons: {
+  specializations: {
     flexDirection: 'row',
-    flexWrap: 'wrap', // Allow items to wrap to the next line
-    justifyContent: 'flex-start', // Align items at the beginning of the container
-    marginBottom: 50,
+    flexWrap: 'wrap', 
+    justifyContent: 'flex-start', 
+    marginBottom: 20,
+    marginTop: 30,
   
   },
   specializationsSection: {
-    paddingTop: 20,
+    marginTop: 15,
+
+
   },
-  sectionTitle:{
+ 
+  specializationText1: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderColor: '#3C1AB9',
+    borderRadius: 18,
+    borderWidth: 2,
+    padding: 15,
+    width: 120,
+    height: 50,
+  
+  },
+  specializationText2: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderColor: '#3C1AB9',
+    borderRadius: 18,
+    borderWidth: 2,
+    padding: 15,
+    width: 120,
+    height: 50,
+    marginLeft: 40,
+  
+  },
+  specializationText3: {
+    alignSelf: 'center',
+    borderColor: '#3C1AB9',
+    borderRadius: 18,
+    borderWidth: 2,
+    padding: 15,
+    width: 150,
+    height: 50,
     marginBottom: 15,
-  },
-  specializationButton1: {
-    borderColor: '#3C1AB9',
-    borderRadius: 18,
-    //backgroundColor: '#ffff',
-    borderWidth: 2,
-    padding: 15,
-    width: 120,
-    height: 50,
-  
-  
 
-    // padding: 15,
-    // width: '100%',
-    // flexDirection: 'row',
+  },
+  bookButton: {
+
+    backgroundColor: '#3C1AB9', 
+    padding: 10, 
+    borderRadius: 35, 
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 15,
 
   },
-  specializationButton2: {
-    borderColor: '#3C1AB9',
-    borderRadius: 18,
-    //backgroundColor: '#ffff',
-    borderWidth: 2,
-    //padding: 15,
-    width: 120,
-    height: 45,
-    //margin: 15,
-    marginLeft: 15,
+  bookButtonText: {
+    color: '#ffff',
+  },
+  bookingSection: {
+    flexDirection: 'row',
   
-  
-
-    // padding: 15,
-    // width: '100%',
-    // flexDirection: 'row',
-    alignItems: 'center',
+  },
+  priceNumber: {
+    paddingLeft: 220,
+    fontWeight: '800',
 
   },
-  specializationButton3: {
-    borderColor: '#3C1AB9',
-    borderRadius: 18,
-    //backgroundColor: '#ffff',
-    borderWidth: 2,
-    padding: 15,
-    width: 120,
-    height: 50,
-  
-  
-
-    // padding: 15,
-    // width: '100%',
-    // flexDirection: 'row',
-    alignItems: 'center',
+  priceText: {
+    paddingLeft: 6,
+    fontWeight: '700',
 
   },
-  specializationText: {
-    alignSelf: 'center'
-  }
-  // ... and so on for other elements
+  
 });
 
 export default DoctorProfile;

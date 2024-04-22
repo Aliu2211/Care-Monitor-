@@ -9,7 +9,7 @@ import VerificationScreen from "./src/components/Screens/OTP_Verification";
 import SplashScreen from './src/components/Screens/SplashScreen';
 import Symptoms_log from './src/components/Screens/Symptoms_log';
 import User_Stat_Monitoring from './src/components/Screens/User_Stat_Monitoring';
-
+import UserProfileScreen from './src/components/Screens/UserProfileScreen';
 //navigation.navigate('VerificationScreen')
 
 const Stack = createNativeStackNavigator();
@@ -29,11 +29,21 @@ function App() {
         component={Sign_in} 
         options={{headerShown: false}}
         />
-        {/* <Stack.Screen 
+        <Stack.Screen 
+        name="UserProfileScreen" 
+        component={UserProfileScreen} 
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
+        name="Sign_Up" 
+        component={Sign_Up} 
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
         name="User_Stat_Monitoring" 
         component={User_Stat_Monitoring} 
         options={{headerShown: false}}
-        /> */}
+        />
         {/* <Stack.Screen 
         name="Symptoms_log" 
         component={Symptoms_log} 
@@ -43,20 +53,16 @@ function App() {
         <Stack.Screen 
         name="Doctor_profile" 
         component={Doctor_profile} 
-        options={{headerShown: false}}
+        options={{headerShown: true}}
         />
 
-        <Stack.Screen 
-        name="Sign_Up" 
-        component={Sign_Up} 
-        options={{headerShown: false}}
-        />
-{/* 
+        
+
         <Stack.Screen 
         name="VerificationScreen" 
         component={VerificationScreen}
         options={{headerShown: false}}
-        /> */}
+        /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

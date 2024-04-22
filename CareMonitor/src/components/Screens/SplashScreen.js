@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Assuming you use MaterialCommunityIcons
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; 
 import Sign_in from './Sign_in';
 import TransparentCircle from '../circles';
-//https://sentry.io/answers/create-a-new-git-branch-from-an-existing-branch/
+
 
 
 
@@ -18,14 +18,14 @@ const SplashScreen = ({navigation}) => {
     const borderWidth = size / 2; // Border width is 50% of the circle's size
 
 
-    return (
-      <TransparentCircle
-        key={index}
-        size={size}
-        borderWidth={borderWidth}
-        style={{ left: left, top: top }}
-      />
-    );
+    // return (
+    //   <TransparentCircle
+    //     key={index}
+    //     size={size}
+    //     borderWidth={borderWidth}
+    //     style={{ left: left, top: top }}
+    //   />
+    // );
   });
 
 
@@ -34,7 +34,7 @@ const SplashScreen = ({navigation}) => {
         {circles}
       <Text style={styles.title}>CareMonitor+</Text>
       <View style={styles.iconContainer}>
-      <Image source={require('../assets/PD.jpg')} style={styles.image} /> 
+      <Image source={require('../assets/sp.png')} style={styles.image} /> 
 
         {/*<Icon name="heart-pulse" size={100} color="red" /> */}
       </View>
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   iconContainer: {
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     padding: 20,
-    borderRadius: 10,
+   // borderRadius: 10,
   },
   image: {  
-     height: 100,
-     width: 100,
+     height: 250,
+     width: 300,
 
   },
   button: {

@@ -1,100 +1,105 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from 'react-native';
+//import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native'; 
 
-const SignUpScreen = ({navigation}) => {
+
+
+
+const Sign_Up = ({navigation}) => {
+  
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
 
-  const handleSignUpPress = async () => {
-    // Basic validation (replace with your actual validation logic)
-    if (!fullName || !email || !password || !confirmPassword) {
-      setErrorMessage('Please fill in all fields.');
+  const handleSignup = () => {
+    // Validating  inputs
+    if (!fullName || !email || !password) {
+      Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ fullName, email, password }),
-      });
-
-      if (response.ok) {
-        // Handle successful sign up (e.g., navigate to a different screen)
-        console.log('Sign up successful!');
-      } else {
-        // Handle error (e.g., display error message)
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Sign up failed.');
-      }
-    } catch (error) {
-      console.error(error);
-      setErrorMessage('An error occurred.');
-    }
+    
+    // navigation.navigate({VerificationScreen});
   };
+
+  const handleSignin = () => {
+    // navigation.navigate({Sign_in});
+
+  };
+
+  
 
   return (
     <View style={styles.container}>
-     
-      {/* Replace with  your image path */}
-      <Image source={require('../assets/heart-health-medical.svg')} style={styles.image} />  
-
-      <TextInput
-        style={styles.input}
-        placeholder="Full Name"
-        value={fullName}
-        onChangeText={setFullName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email Address"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-      <View style={styles.passwordContainer}>
+      <View style= {styles.header}>    
+           <Image
+            source={require('../assets/signup.png')}
+            style={styles.image}
+          /> 
+          {/* <Text style={styles.title}>Get Started</Text>
+          <Text style={styles.subtitle}>by creating a free account.</Text> */}
+      </View>
+      
+      <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Full name"
+          value={fullName}
+          onChangeText={setFullName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Valid email"
+          value={email}
+          onChangeText={setEmail}
+        />
+       
+        <TextInput
+          style={styles.input}
+          placeholder="Strong Password"
+          secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={!showPassword}
         />
-        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} style={styles.eyeIcon} />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.passwordContainer}>
-        <TextInput
+         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          secureTextEntry={!showConfirmPassword}
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
         />
-        <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-          <Icon name={showConfirmPassword ? 'eye-slash' : 'eye'} size={20} style={styles.eyeIcon} />
+
+
+       <View style={styles.checkboxContainer}>
+          <TouchableOpacity onPress={() => setAgreeToTerms(!agreeToTerms)}>
+            <View style={[styles.checkbox, { backgroundColor: agreeToTerms ? '#007bff' : '#fff' }]} />
+          </TouchableOpacity>
+          <Text style={styles.checkboxLabel}>By checking the box you agree to our 
+             <Text>Terms</Text>and 
+             <Text>Conditions</Text>.
+          </Text>
+        </View>
+
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Next </Text>
         </TouchableOpacity>
       </View>
 
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-
-      <TouchableOpacity style={styles.signUpButton} onPress={handleSignUpPress}>
-        <Text style={styles.signUpButtonText}>Sign Up</Text>
-        <Icon name="arrow-right" size={20} color="white" />
-      </TouchableOpacity>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Already a member?</Text>
+        <TouchableOpacity onPress={handleSignin}> 
+          <Text style={styles.footerLink}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -102,49 +107,85 @@ const SignUpScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+  },
+  header: {
+    alignItems: "center",
+      
+
   },
   image: {
-    width: 200, 
-    height: 200, 
-    marginBottom: 20, 
+    width: 320,
+    height: 195,
+  
+
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    paddingTop: 30,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 30,
+  },
+  form: {
+    width: '80%',
   },
   input: {
-    width: '100%',
-    height: 40,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#ccc',
     padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
+    backgroundColor: "F1F0F0",
+    marginBottom: 15,
+    borderRadius: 15,
+    fontSize: 17,
+    fontWeight: "600",
+
   },
-  passwordContainer: {
-    flexDirection: 'row',
+  button: {
+    backgroundColor: '#007bff',
+    padding: 10,
     alignItems: 'center',
+    borderRadius: 13,
   },
-  eyeIcon: {
-    position: 'absolute', 
-    right: 10, 
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
-  signUpButton: {
-    backgroundColor: '#673ab7', 
-    padding: 10, 
-    borderRadius: 5, 
+  footer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 20,
   },
-  signUpButtonText: {
-    color: 'white', 
-    marginRight: 10, 
+  footerText: {
+    color: '#666',
   },
-  errorMessage: {
-    color: 'red', 
-    marginBottom: 10,
+  footerLink: {
+    color: '#007bff',
+    marginLeft: 5,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    marginRight: 10,
+  },
+  checkboxLabel: {
+    fontSize: 10,
+    color: '#666',
+    flex: 1,
   },
 });
 
-export default SignUpScreen;
+export default Sign_Up;
