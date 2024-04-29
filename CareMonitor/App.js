@@ -10,6 +10,10 @@ import SplashScreen from './src/components/Screens/SplashScreen';
 import Symptoms_log from './src/components/Screens/Symptoms_log';
 import User_Stat_Monitoring from './src/components/Screens/User_Stat_Monitoring';
 import UserProfileScreen from './src/components/Screens/UserProfileScreen';
+import BottomTabNavigation from './src/components/BottomTabNav';
+import AccountSettingsScreen from './src/components/Screens/Account_settings';
+import DoctorAppointmentScreen from './src/components/Screens/book_doctor';
+import ForgotPasswordScreen from './src/components/Screens/Forgot _password';
 //navigation.navigate('VerificationScreen')
 
 const Stack = createNativeStackNavigator();
@@ -30,13 +34,13 @@ function App() {
         options={{headerShown: false}}
         />
         <Stack.Screen 
-        name="UserProfileScreen" 
-        component={UserProfileScreen} 
+        name="Sign_Up" 
+        component={Sign_Up} 
         options={{headerShown: false}}
         />
         <Stack.Screen 
-        name="Sign_Up" 
-        component={Sign_Up} 
+        name="ForgotPasswordScreen" 
+        component={ForgotPasswordScreen} 
         options={{headerShown: false}}
         />
         <Stack.Screen 
@@ -44,25 +48,42 @@ function App() {
         component={User_Stat_Monitoring} 
         options={{headerShown: false}}
         />
-        {/* <Stack.Screen 
+        <Stack.Screen 
+        name="UserProfileScreen" 
+        component={UserProfileScreen} 
+        options={{headerShown: false}}
+        />
+        <Stack.Screen
+        name='AccountSettingsScreen'
+        component={AccountSettingsScreen}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen 
         name="Symptoms_log" 
         component={Symptoms_log} 
         options={{headerShown: false}}
-        /> */}
+        />
 
         <Stack.Screen 
         name="Doctor_profile" 
         component={Doctor_profile} 
         options={{headerShown: true}}
         />
-
-        
-
+        <Stack.Screen 
+        name="DoctorAppointmentScreen" 
+        component={DoctorAppointmentScreen}
+        options={{headerShown: false}}
+        /> 
         <Stack.Screen 
         name="VerificationScreen" 
         component={VerificationScreen}
         options={{headerShown: false}}
         /> 
+        <Stack.Screen
+        name='BottomTabNavigation'
+        component={BottomTabNavigation}
+        options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Assuming you use MaterialCommunityIcons
+
 import { 
   View, 
   Text, 
@@ -10,14 +10,13 @@ import {
   StyleSheet 
 
 } from 'react-native';
-import Sign_Up from './Sign_Up';
 
 const Sign_in = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Implement your login logic here
+   
     // This could involve sending a request to your backend API
     // to authenticate the user
     if ( !email || !password) {
@@ -29,14 +28,18 @@ const Sign_in = ({navigation}) => {
 };   
 const handleSignup = () => {
 
-  if (Sign_Up) {
-    return <Sign_Up/>;
-  
-  }
+  navigation.navigate('Sign_Up');
 
   // Simulate sign-in success
-  Alert.alert('Success', 'You have signed in successfully!');
-}
+  // Alert.alert('Success', 'You have signed in successfully!');
+};
+const handleforgotPassword = () => {
+
+  navigation.navigate('ForgotPasswordScreen');
+
+  // Simulate sign-in success
+  // Alert.alert('Success', 'You have signed in successfully!');
+};
      
   
 
@@ -59,6 +62,13 @@ const handleSignup = () => {
         value={password}
         onChangeText={setPassword}
       />
+
+      <TouchableOpacity style={styles.forgotPassword}
+      onPress={handleforgotPassword}
+      >
+        <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity style={styles.button} onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Log in</Text>
@@ -126,6 +136,14 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     borderRadius: 35,
+  },
+
+  forgotPassword: {
+    alignSelf: 'flex-start',
+    marginBottom: 20,
+  },
+  forgotPasswordText: {
+    color: '#007bff',
   },
   button: {
     backgroundColor: '#3C1AB9',

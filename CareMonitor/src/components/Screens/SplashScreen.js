@@ -31,7 +31,7 @@ const SplashScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-        {circles}
+        {/* {circles} */}
       <Text style={styles.title}>CareMonitor+</Text>
       <View style={styles.iconContainer}>
       <Image source={require('../assets/sp.png')} style={styles.image} /> 

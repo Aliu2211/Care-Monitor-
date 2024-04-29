@@ -8,8 +8,7 @@ import {
   Alert,
   Image,
 } from 'react-native';
-//import { NavigationContainer } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native'; 
+
 
 
 
@@ -23,16 +22,16 @@ const Sign_Up = ({navigation}) => {
 
   const handleSignup = () => {
     // Validating  inputs
-    if (!fullName || !email || !password) {
+    if (!fullName || !email || !password ) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
     
-    // navigation.navigate({VerificationScreen});
+     navigation.navigate('User_Stat_Monitoring');
   };
 
   const handleSignin = () => {
-    // navigation.navigate({Sign_in});
+     navigation.navigate('Sign_in');
 
   };
 
@@ -52,20 +51,20 @@ const Sign_Up = ({navigation}) => {
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Full name"
+          placeholder="Full Name"
           value={fullName}
           onChangeText={setFullName}
         />
         <TextInput
           style={styles.input}
-          placeholder="Valid email"
+          placeholder="Email Address"
           value={email}
           onChangeText={setEmail}
         />
        
         <TextInput
           style={styles.input}
-          placeholder="Strong Password"
+          placeholder="Password"
           secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
@@ -134,24 +133,25 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   form: {
-    width: '80%',
+    width: '85%',
+    
   },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
-    backgroundColor: "F1F0F0",
+    backgroundColor: "#ffff",
     marginBottom: 15,
-    borderRadius: 15,
+    borderRadius: 25,
     fontSize: 17,
     fontWeight: "600",
 
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#3C1AB9',
     padding: 10,
     alignItems: 'center',
-    borderRadius: 13,
+    borderRadius: 20,
   },
   buttonText: {
     color: '#fff',
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   footerLink: {
-    color: '#007bff',
+    color: '#3C1AB9',
     marginLeft: 5,
   },
   checkboxContainer: {

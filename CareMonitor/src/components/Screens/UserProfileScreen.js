@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons'; // Assuming you use Expo for icons
-import Signup from './Sign_Up';
 
+import BottomTabNavigation from '../BottomTabNav';
 // Sample Data (replace with actual data fetching)
 const userData = {
   name: 'Freda Adwoa Boamah',
@@ -65,32 +65,32 @@ const UserProfileScreen = ({navigation}) => {
   );
 };
 
-const BottomTabNavigation = ({navigation}) => {
-  return (
-    <View style={styles.bottomNav}>
-      {/* Home */}
-      <TouchableOpacity style={styles.navItem}>
-        <Ionicons name="home-outline" size={24} color="#666" />
-        <Text style={styles.navText}>Home</Text>
-      </TouchableOpacity>
+// const BottomTabNavigation = ({navigation}) => {
+//   return (
+//     <View style={styles.bottomNav}>
+//       {/* Home */}
+//       <TouchableOpacity style={styles.navItem}>
+//         <Ionicons name="home-outline" size={24} color="#666" />
+//         <Text style={styles.navText}>Home</Text>
+//       </TouchableOpacity>
 
-      {/* Account */}
-      <TouchableOpacity style={styles.navItem}
-      onPress={navigation.navigate({Sign_Up})}
+//       {/* Account */}
+//       <TouchableOpacity style={styles.navItem}
+//       onPress={navigation.navigate({Sign_Up})}
       
-      >
-        <Ionicons name="person-outline" size={24} color="#666" />
-        <Text style={styles.navText}>Account</Text>
-      </TouchableOpacity>
+//       >
+//         <Ionicons name="person-outline" size={24} color="#666" />
+//         <Text style={styles.navText}>Account</Text>
+//       </TouchableOpacity>
 
-      {/* Notifications */}
-      <TouchableOpacity style={styles.navItem}>
-        <Ionicons name="notifications-outline" size={24} color="#666" />
-        <Text style={styles.navText}>Notifications</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+//       {/* Notifications */}
+//       <TouchableOpacity style={styles.navItem}>
+//         <Ionicons name="notifications-outline" size={24} color="#666" />
+//         <Text style={styles.navText}>Notifications</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
 
 const styles = StyleSheet.create({
   // ... (styles from the previous example) ...

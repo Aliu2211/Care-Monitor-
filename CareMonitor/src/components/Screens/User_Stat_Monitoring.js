@@ -31,6 +31,9 @@ const PulseMonitoringScreen = () => {
       <View style={[styles.card, styles.tempCard]}>
         <Text style={styles.value}>37.9°</Text>
         <Text style={styles.label}>Your current temperature</Text>
+        {/* <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Show Graph</Text>
+        </TouchableOpacity> */}
       </View>
 
       {/* Bottom Navigation */}
@@ -96,10 +99,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#fff',
     padding: 10,
-    borderRadius: 17,
+    borderRadius: 10,
     marginTop: 25,
-    height: 30,
-    width: 200,
+    height: 40,
+    width: 120,
   },
   buttonText: {
     color: 'black',
@@ -107,20 +110,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: 'flex-start',
   },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-    paddingTop: 10,
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navText: {
-    fontSize: 12,
-  },
+  // bottomNav: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-around',
+  //   alignItems: 'center',
+  //   borderTopWidth: 1,
+  //   borderTopColor: '#ddd',
+  //   paddingTop: 10,
+  // },
+  // navItem: {
+  //   alignItems: 'center',
+  // },
+  // navText: {
+  //   fontSize: 12,
+  // },
 });
 
 export default PulseMonitoringScreen;
