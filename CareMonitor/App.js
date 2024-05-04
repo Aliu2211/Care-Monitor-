@@ -16,6 +16,8 @@ import DoctorAppointmentScreen from './src/components/Screens/book_doctor';
 import ForgotPasswordScreen from './src/components/Screens/Forgot _password';
 //navigation.navigate('VerificationScreen')
 
+//nested navigation
+
 const Stack = createNativeStackNavigator();
 
 function App() {

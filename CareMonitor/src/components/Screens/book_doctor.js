@@ -8,33 +8,61 @@ import {
   TouchableOpacity 
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons'; // Assuming you are using Expo
+import BottomTabNavigation from '../BottomTabNav';
+import Ion from '@expo/vector-icons/Ionicons';
+import RatingStars from '../StarRating';
+import { useNavigation } from '@react-navigation/native';
 
 
-const DoctorAppointmentScreen = () => {
+const DoctorAppointmentScreen = ({navigation}) => {
   const doctors = [
-    { type: 'Dentist', name: 'Dr. Thomas Shelby', rating: 5, icon: 'tooth' },
-    { type: 'Dentist', name: 'Dr. Thomas Shelby', rating: 4, icon: 'tooth' },
-    { type: 'Therapist', name: 'Dr. Thomas Shelby', rating: 5, icon: 'person' },
-    { type: 'Cardiologist', name: 'Dr. Thomas Shelby', rating: 3, icon: 'heart' },
+    { type: 'Denti', name: 'Dr. Thomas Shelby', rating: 5, colorIndex: 0 },
+    { type: 'Dentist', name: 'Dr. Thomas Shelby', rating: 4, colorIndex: 1 },
+    { type: 'Therapist', name: 'Dr. Thomas Shelby', rating: 5, colorIndex: 2 },
+    { type: 'Cardiologist', name: 'Dr. Thomas Shelby', rating: 3, colorIndex: 3 },
+  ];
+  const appointments = [
+    { type: 'Annual Therapist Check-up', mode: 'Online', doctor: 'Dr. Adam Mike', date: '21/05/2024', Ionicons: 'person' }
+    
   ];
 
-  const appointments = [
-    { type: 'Therapist Check-up', mode: 'Online', doctor: 'Dr. Adam Mike', date: '21/05/2024' }
-  ];
+
+  const colors = ['#FF5733', '#33FFC1', '#3367FF', '#FF3367']; // Define your colors here
+  // const navigation = useNavigation();
+
+  const handleDoctorPress = (doctor) => {
+    navigation.navigate('Doctor_profile', { doctor }); // Navigate to DoctorProfileScreen and pass the doctor data
+  };
+
+  
+  // const renderDoctorItem = ({ item }) => (
+    
+  //   <View style={[styles.doctorItem, { backgroundColor: colors[item.colorIndex] }]}>
+  //     <Text style={styles.doctorType}>{item.type}</Text>
+  //     <Text style={styles.doctorName}>{item.name}</Text>
+  //     <View style={styles.doctorRating}>
+  //       <RatingStars rating={item.rating} />
+  //     </View>
+  //   </View>
+  
+  // );
 
   const renderDoctorItem = ({ item }) => (
-    <View style={styles.doctorItem}>
-      <Ionicons name={item.icon} size={24} color="blue" />
-      <Text style={styles.doctorType}>{item.type}</Text>
-      <Text style={styles.doctorName}>{item.name}</Text>
-      <Text style={styles.doctorRating}>Rating: {item.rating}</Text>
-    </View>
+    <TouchableOpacity onPress={() => handleDoctorPress(item)}>
+      <View style={[styles.doctorItem, { backgroundColor: colors[item.colorIndex] }]}>
+        <Text style={styles.doctorType}>{item.type}</Text>
+        <Text style={styles.doctorName}>{item.name}</Text>
+        <View style={styles.doctorRating}>
+          <RatingStars rating={item.rating} />
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 
   const renderAppointmentItem = ({ item }) => (
     <View style={styles.appointmentItem}>
       <Text>{item.type}</Text>
-      <Text>{item.mode}</Text>
+      <Text>{item.Ionicons}{item.mode}</Text>
       <Text>{item.doctor}</Text>
       <Text>{item.date}</Text>
     </View>
@@ -69,6 +97,8 @@ const DoctorAppointmentScreen = () => {
       </View>
 
       {/* Bottom Navigation (You can use the component from previous examples) */}
+      <BottomTabNavigation/>
+
     </View>
   );
 };
@@ -86,6 +116,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       padding: 10,
       marginBottom: 20,
+      marginTop: 30,
     },
     searchInput: {
       flex: 1,
@@ -131,9 +162,9 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
     bookButton: {
-      backgroundColor: 'blue',
+      backgroundColor: '#3C1AB9',
       padding: 15,
-      borderRadius: 10,
+      borderRadius: 20,
       alignItems: 'center',
       marginTop: 10,
     },

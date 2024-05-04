@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const AccountSettingsScreen = () => {
+const AccountSettingsScreen = ({navigation}) => {
   const settingsOptions = [
     { title: 'Notifications', icon: 'notifications-outline' },
     { title: 'Personal Information', icon: 'person-outline' },
@@ -13,11 +13,17 @@ const AccountSettingsScreen = () => {
     { title: 'Feedback & Services', icon: 'chatbox-ellipses-outline' },
   ];
 
+  const handlebackward = () => {
+           
+    navigation.navigate('UserProfileScreen');
+
+};
+
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity style={styles.backButton} onPress={handlebackward}>
           <Ionicons name="chevron-back-outline" size={24} color="black" /> 
         </TouchableOpacity>
         <Text style={styles.title}>Account settings</Text>
@@ -53,9 +59,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 20,
+        marginTop: 70,
       },
       backButton: {
         marginRight: 20,
+        
       },
       title: {
         fontSize: 20,

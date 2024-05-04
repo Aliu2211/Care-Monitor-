@@ -10,6 +10,12 @@ const userData = {
 };
 
 const UserProfileScreen = ({navigation}) => {
+
+  const handleSettings = () => {
+           
+          navigation.navigate('AccountSettingsScreen');
+
+ };
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -17,7 +23,7 @@ const UserProfileScreen = ({navigation}) => {
         <Image source={userData.profileImage} style={styles.profileImage} />
         <View>
           <Text style={styles.name}>{userData.name}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleSettings}>
             <Text style={styles.accountSettings}>Account Settings</Text>
           </TouchableOpacity>
         </View>
@@ -65,32 +71,6 @@ const UserProfileScreen = ({navigation}) => {
   );
 };
 
-// const BottomTabNavigation = ({navigation}) => {
-//   return (
-//     <View style={styles.bottomNav}>
-//       {/* Home */}
-//       <TouchableOpacity style={styles.navItem}>
-//         <Ionicons name="home-outline" size={24} color="#666" />
-//         <Text style={styles.navText}>Home</Text>
-//       </TouchableOpacity>
-
-//       {/* Account */}
-//       <TouchableOpacity style={styles.navItem}
-//       onPress={navigation.navigate({Sign_Up})}
-      
-//       >
-//         <Ionicons name="person-outline" size={24} color="#666" />
-//         <Text style={styles.navText}>Account</Text>
-//       </TouchableOpacity>
-
-//       {/* Notifications */}
-//       <TouchableOpacity style={styles.navItem}>
-//         <Ionicons name="notifications-outline" size={24} color="#666" />
-//         <Text style={styles.navText}>Notifications</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
 
 const styles = StyleSheet.create({
   // ... (styles from the previous example) ...
@@ -202,7 +182,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     width: 329,
-    //marginLeft: 10,
+    marginBottom: 40,
+    
     backgroundColor: '#DAF7F9',
     borderRadius: 15,
     marginTop: 15,
@@ -218,31 +199,13 @@ const styles = StyleSheet.create({
 
   },
   buttonText: {
-    //alignSelf: 'center',
-   // alignContent: 'center',
-    //alignItems: 'center',
+   
     fontWeight: '600',
     marginBottom: 10,
     textAlign: 'justify'
   },
   
-  bottomNav: {
-    marginTop: 60,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderRadius: 20,
-   
-    borderTopColor: '#3C1AB9',
-    paddingTop: 10,
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navText: {
-    fontSize: 12,
-  },
+ 
 });
 
 export default UserProfileScreen;
